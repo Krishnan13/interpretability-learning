@@ -10,13 +10,14 @@ Things I can implement without help: Create a GitHub repository, generate a Pers
 Experiment or exercise evidence: Successfully pushed progress.md to public GitHub repository.
 Mistakes or misconceptions found: Assuming `np.array(a=[...])` was correct syntax instead of `a = np.array([...])`; initial uncertainty about folder roles.
 Remaining blocker: None.
+# Baseline - Phase 1, Week 2
 Next smallest task: Begin Phase 1, Week 2 (Core Python).
 Mastery gate passed: Yes
 - Reason: User successfully authenticated Git in Colab, pushed a tracked file, and correctly explained the repository structure and large-file handling.
+# Baseline - Phase 1, Week 3
 PROGRESS LEDGER
 Date: 16 July 2026
 Phase/ week: Phase 1 / Week 3
-
 Status: Mastered
 Concepts I can explain: Dictionaries (key-value pairs), Tuples (immutability), Sets (uniqueness), Comprehensions (syntax and logic mapping), Module importing (math), File context managers (with open).
 Things I can implement without help: Creating and updating dictionaries, single-line list and dictionary comprehensions, module imports via dot notation, and reading/writing files.

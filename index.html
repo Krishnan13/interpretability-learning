@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A 48-week learning dashboard for mechanistic interpretability and AI alignment.">
+  <meta name="theme-color" content="#0b1020">
+  <title>Interpretability Learning Dashboard</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="Interpretability Learning Dashboard home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" role="img">
+          <path d="M10 12.5 20 7l10 5.5v15L20 33l-10-5.5z"></path>
+          <circle cx="20" cy="20" r="4"></circle>
+          <path d="M20 11v5M12.5 15.7l4.2 2.4m10.8-2.4-4.2 2.4M12.5 24.3l4.2-2.4m10.8 2.4-4.2-2.4M20 29v-5"></path>
+        </svg>
+      </span>
+      <span>
+        <strong>Interpretability</strong>
+        <small>Learning Dashboard</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-view="overview">Overview</button>
+      <button class="nav-link" data-view="roadmap">Roadmap</button>
+      <button class="nav-link" data-view="journal">Journal</button>
+    </nav>
+
+    <div class="topbar-actions">
+      <button class="icon-button" id="themeToggle" aria-label="Toggle colour theme" title="Toggle colour theme">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path></svg>
+      </button>
+      <button class="button button-primary compact" id="updatePositionButton">
+        <span>Update position</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="view active" id="overviewView" aria-labelledby="overviewTitle">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Your 48-week path into mechanistic interpretability</p>
+          <h1 id="overviewTitle">Build understanding.<br><span>Earn the evidence.</span></h1>
+          <p class="hero-intro">Track what you can explain, implement and investigate—then see exactly where your learning leads next.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="continueButton">
+              Continue current week
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+            </button>
+            <button class="button button-ghost" id="exploreRoadmapButton">Explore roadmap</button>
+          </div>
+        </div>
+
+        <aside class="progress-orbit-card" aria-label="Overall progress">
+          <div class="orbit">
+            <svg viewBox="0 0 180 180" aria-hidden="true">
+              <circle class="orbit-track" cx="90" cy="90" r="74"></circle>
+              <circle class="orbit-progress" id="overallProgressCircle" cx="90" cy="90" r="74"></circle>
+            </svg>
+            <div class="orbit-content">
+              <strong id="overallProgressValue">0%</strong>
+              <span>mastered</span>
+            </div>
+          </div>
+          <div class="orbit-meta">
+            <span id="masteredWeeksValue">0 of 48 weeks</span>
+            <span id="currentPhaseBadge">Phase 0</span>
+          </div>
+        </aside>
+      </div>
+
+      <section class="current-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Right now</p>
+            <h2>Your current learning edge</h2>
+          </div>
+          <button class="text-button" id="viewCurrentDetails">View week details <span aria-hidden="true">→</span></button>
+        </div>
+        <article class="current-card" id="currentWeekCard"></article>
+      </section>
+
+      <section class="insight-grid">
+        <article class="panel learned-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Behind you</p>
+              <h2>What you have built</h2>
+            </div>
+            <span class="count-pill" id="learnedCount">0 mastered</span>
+          </div>
+          <div id="learnedList" class="learned-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">On the horizon</p>
+              <h2>Coming next</h2>
+            </div>
+          </div>
+          <div id="upcomingList" class="upcoming-list"></div>
+        </article>
+      </section>
+
+      <section class="principle-card">
+        <div class="principle-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9 18h6m-5 3h4M8.5 14.5A7 7 0 1 1 15.5 14.5c-.9.7-1.5 1.5-1.5 2.5h-4c0-1-.6-1.8-1.5-2.5Z"></path></svg>
+        </div>
+        <div>
+          <p class="eyebrow">The mastery rule</p>
+          <blockquote>Do not mark a topic complete because you watched or read something. Complete it when you can explain it, implement it, and pass its mastery gate.</blockquote>
+        </div>
+        <div class="depth-key" aria-label="Depth levels">
+          <span><i class="depth-dot recognise"></i>Recognise</span>
+          <span><i class="depth-dot explain"></i>Explain</span>
+          <span><i class="depth-dot implement"></i>Implement</span>
+          <span><i class="depth-dot investigate"></i>Investigate</span>
+        </div>
+      </section>
+    </section>
+
+    <section class="view" id="roadmapView" aria-labelledby="roadmapTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">The complete path</p>
+          <h1 id="roadmapTitle">48 weeks. Nine phases.<br><span>One coherent climb.</span></h1>
+        </div>
+        <div class="roadmap-controls">
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+            <input id="roadmapSearch" type="search" placeholder="Search topics, skills or evidence">
+          </label>
+          <select id="roadmapFilter" aria-label="Filter roadmap">
+            <option value="all">All weeks</option>
+            <option value="current">Current phase</option>
+            <option value="mastered">Mastered</option>
+            <option value="in-progress">In progress</option>
+            <option value="upcoming">Upcoming</option>
+          </select>
+        </div>
+      </div>
+      <div class="phase-rail" id="phaseRail" aria-label="Roadmap phases"></div>
+      <div id="roadmapContent" class="roadmap-content"></div>
+    </section>
+
+    <section class="view" id="journalView" aria-labelledby="journalTitle">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Your evidence trail</p>
+          <h1 id="journalTitle">Reflection turns activity<br><span>into learning.</span></h1>
+        </div>
+        <div class="data-actions">
+          <button class="button button-ghost compact" id="exportButton">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"></path></svg>
+            Export progress
+          </button>
+          <label class="button button-ghost compact file-button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9m0 0 4 4m-4-4-4 4M5 5h14"></path></svg>
+            Import backup
+            <input type="file" id="importInput" accept="application/json">
+          </label>
+        </div>
+      </div>
+
+      <div class="journal-layout">
+        <aside class="journal-sidebar">
+          <div class="journal-stats" id="journalStats"></div>
+          <div class="journal-week-list" id="journalWeekList"></div>
+        </aside>
+        <article class="journal-editor" id="journalEditor"></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built for deliberate practice, honest evidence and a long research horizon.</p>
+    <a href="https://github.com/Krishnan13/interpretability-learning" target="_blank" rel="noreferrer">View source on GitHub ↗</a>
+  </footer>
+
+  <dialog id="positionDialog">
+    <form method="dialog" id="positionForm">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">Move your marker</p>
+          <h2>Where are you now?</h2>
+          <p>Set your active week. This changes the dashboard view but does not automatically mark earlier weeks as mastered.</p>
+        </div>
+        <button class="icon-button close-button" value="cancel" aria-label="Close dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+      <label>
+        Current phase
+        <select id="positionPhase"></select>
+      </label>
+      <label>
+        Current week
+        <select id="positionWeek"></select>
+      </label>
+      <div class="dialog-preview" id="positionPreview"></div>
+      <div class="dialog-actions">
+        <button class="button button-ghost" value="cancel">Cancel</button>
+        <button class="button button-primary" id="savePositionButton" value="default">Save position</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="weekDialog">
+    <div id="weekDialogContent"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="roadmap.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@ const ROADMAP = [
     title: "Setup & Baseline",
     shortTitle: "Setup",
     weeks: [1, 1],
-    colour: "#78e4c5",
+    colour: "#ad4f35",
     outcome: "Build a reproducible workspace and an honest starting-point record.",
     gate: [
       "Run a notebook and a Python script successfully.",
@@ -37,7 +37,7 @@ const ROADMAP = [
     title: "Python, NumPy & Git",
     shortTitle: "Python",
     weeks: [2, 6],
-    colour: "#72a7ff",
+    colour: "#416a70",
     outcome: "Write and debug scientific Python without depending on generated code.",
     gate: [
       "Solve short Python exercises without AI-generated solutions.",
@@ -65,7 +65,7 @@ const ROADMAP = [
     title: "Applied Mathematics",
     shortTitle: "Math",
     weeks: [7, 10],
-    colour: "#b78cff",
+    colour: "#76598f",
     outcome: "Connect equations directly to tensors, gradients, losses and probability outputs.",
     gate: [
       "Derive gradients for a scalar linear-regression loss.",
@@ -87,7 +87,7 @@ const ROADMAP = [
     title: "PyTorch & Neural Networks",
     shortTitle: "PyTorch",
     weeks: [11, 18],
-    colour: "#ff8d83",
+    colour: "#a64e47",
     outcome: "Train, inspect and debug small models independently.",
     gate: [
       "Build and train an MLP without copying a complete tutorial.",
@@ -117,7 +117,7 @@ const ROADMAP = [
     title: "Empirical ML Research",
     shortTitle: "Research",
     weeks: [19, 23],
-    colour: "#ffc76a",
+    colour: "#8c652c",
     outcome: "Design experiments that produce believable evidence rather than attractive plots.",
     gate: [
       "Write a one-page experiment plan before running code.",
@@ -143,7 +143,7 @@ const ROADMAP = [
     title: "Transformers from the Inside",
     shortTitle: "Transformers",
     weeks: [24, 31],
-    colour: "#ff7db2",
+    colour: "#93466a",
     outcome: "Implement and train a small decoder-only transformer and explain every major tensor.",
     gate: [
       "Write scaled dot-product attention from memory and test masking.",
@@ -173,7 +173,7 @@ const ROADMAP = [
     title: "AI Alignment Context",
     shortTitle: "Alignment",
     weeks: [32, 33],
-    colour: "#70d8ff",
+    colour: "#466e75",
     outcome: "Explain why interpretability is pursued, where it helps and where it remains insufficient.",
     gate: [
       "Explain three ways an AI system can act against its designer's intention.",
@@ -195,7 +195,7 @@ const ROADMAP = [
     title: "Mechanistic Interpretability",
     shortTitle: "Mech Interp",
     weeks: [34, 43],
-    colour: "#78e4c5",
+    colour: "#3d6d5c",
     outcome: "Use descriptive and causal tools to analyse known transformer mechanisms.",
     gate: [
       "Cache and modify activations with TransformerLens.",
@@ -227,7 +227,7 @@ const ROADMAP = [
     title: "Portfolio & Career",
     shortTitle: "Portfolio",
     weeks: [44, 48],
-    colour: "#ffc76a",
+    colour: "#914f2d",
     outcome: "Produce credible evidence of empirical research ability.",
     gate: [
       "A new reader can reproduce the central result.",

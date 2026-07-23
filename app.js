@@ -2,7 +2,8 @@ const STORAGE_KEY = "interpretability-roadmap-state-v1";
 
 const defaultState = {
   currentWeek: 1,
-  theme: "dark",
+  theme: "light",
+  designVersion: 2,
   weeks: {},
   selectedJournalWeek: 1,
   lastUpdated: null
@@ -42,7 +43,12 @@ const els = {
 function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return { ...defaultState, ...saved, weeks: saved?.weeks || {} };
+    const migrated = { ...defaultState, ...saved, weeks: saved?.weeks || {} };
+    if (Number(saved?.designVersion || 1) < 2) {
+      migrated.theme = "light";
+      migrated.designVersion = 2;
+    }
+    return migrated;
   } catch {
     return { ...defaultState };
   }
@@ -315,6 +321,28 @@ function renderAll() {
   renderOverview();
   renderRoadmap();
   renderJournal();
+  prepareRevealAnimations();
+}
+
+function prepareRevealAnimations() {
+  const items = document.querySelectorAll(".current-card, .panel, .principle-card, .phase-section, .journal-layout");
+  if (!("IntersectionObserver" in window)) {
+    items.forEach(item => item.classList.add("revealed"));
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: "0px 0px -28px 0px" });
+  items.forEach((item, index) => {
+    item.classList.add("reveal");
+    item.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 55}ms`);
+    observer.observe(item);
+  });
 }
 
 function switchView(viewName) {
